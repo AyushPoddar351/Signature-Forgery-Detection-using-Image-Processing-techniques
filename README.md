@@ -23,20 +23,6 @@ This is a Flask-based web application designed for forgery detection using image
   - json
   - base64
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repo-name/forgery-detection-flask-app.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd forgery-detection-flask-app
-   ```
-3. Install the required libraries:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
 ## File Structure
 ```
 forgery-detection-flask-app/
