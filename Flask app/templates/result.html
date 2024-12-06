@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Forgery Detection Result</h1>
+        <h2>Original Images</h2>
+        <div class="image-container">
+            {% for image in images %}
+                <img src="data:image/jpeg;base64,{{ image | b64encode }}" alt="Original Image">
+            {% endfor %}
+        </div>
+        <h2>Uploaded Image</h2>
+        <div class="image-container">
+            <img src="data:image/jpeg;base64,{{ uploaded_image | b64encode }}" alt="Uploaded Image">
+        </div>
+        <div class="result-container">
+            <h3>Detection Result:</h3>
+            <ul>
+                {% for key, value in result.items() %}
+                    <li><b>{{ key }}</b>: {{ value }}%</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <form action="/" method="get">
+            <button type="submit">Start Again</button>
+        </form>
+    </div>
+</body>
+</html>
