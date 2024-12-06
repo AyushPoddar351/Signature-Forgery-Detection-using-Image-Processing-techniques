@@ -10,7 +10,6 @@ This is a Flask-based web application designed for forgery detection using image
 4. **Dynamic Feedback**: View preprocessing progress and uploaded images in real-time.
 5. **Forgery Detection**: Compare the uploaded image with the dataset and receive detailed results.
 6. **Resource Cleanup**: Automatically deletes temporary files (`scores.json`, uploads) after displaying results.
-7. **Exit and Restart Options**: Includes options to start over or exit the application after viewing results.
 
 ## Prerequisites
 - Python 3.8 or higher
