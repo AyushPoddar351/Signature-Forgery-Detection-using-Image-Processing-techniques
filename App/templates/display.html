@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Dataset</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sample Images</h1>
+        <div class="image-container">
+            {% for image in images %}
+                <img src="data:image/jpeg;base64,{{ image | b64encode }}" alt="Sample Image">
+            {% endfor %}
+        </div>
+        <form action="/preprocess" method="post">
+            <button type="submit">Preprocess Dataset</button>
+        </form>
+    </div>
+</body>
+</html>

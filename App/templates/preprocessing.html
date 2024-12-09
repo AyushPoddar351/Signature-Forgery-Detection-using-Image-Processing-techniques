@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preprocessing</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <script>
+        function checkProgress() {
+            fetch('/progress')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('progress-bar').value = data.progress;
+                    document.getElementById('status').innerText = data.status;
+                    if (data.status === "Finished") {
+                        window.location.href = "/upload-image";
+                    } else {
+                        setTimeout(checkProgress, 1000);
+                    }
+                });
+        }
+
+        function fetchLogs() {
+            fetch('/logs')
+                .then(response => response.json())
+                .then(data => {
+                    const logContainer = document.getElementById('log-container');
+                    logContainer.innerHTML = "";
+                    data.logs.forEach(log => {
+                        const logEntry = document.createElement('p');
+                        logEntry.textContent = log;
+                        logContainer.appendChild(logEntry);
+                    });
+                    setTimeout(fetchLogs, 1000);
+                });
+        }
+
+        window.onload = function() {
+            checkProgress();
+            fetchLogs();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Preprocessing...</h1>
+        <p id="status">Processing</p>
+        <progress id="progress-bar" value="0" max="100" style="width: 100%; height: 30px;"></progress>
+        <div id="log-container" style="margin-top: 20px; text-align: left; max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background-color: #f8f8f8;">
+            <h3>Logs:</h3>
+        </div>
+    </div>
+</body>
+</html>
